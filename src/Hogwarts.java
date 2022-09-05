@@ -2,7 +2,6 @@ public abstract class Hogwarts {
     private final String name;
     private final int magic;
     private final int teleport;
-    protected String facultyName;
     protected int totalFacultyPoints;
     private static final int MIN_VALUE = 0;
 
@@ -55,11 +54,11 @@ public abstract class Hogwarts {
 
     protected static void compareTotalPoints(Hogwarts student1, Hogwarts student2) {
         if (student1.getTotalFacultyPoints() > student2.getTotalFacultyPoints()) {
-            System.out.println(student1.getName() + " (" + student1.getTotalFacultyPoints() + ")" + " is better " + student1.getFacultyName() + " than " + student2.getName() + " (" + student2.getTotalFacultyPoints() + ")");
+            System.out.println(student1.getName() + " (" + student1.getTotalFacultyPoints() + ")" + " is better " + student1.getClass().getName() + " than " + student2.getName() + " (" + student2.getTotalFacultyPoints() + ")");
         } else if (student2.getTotalFacultyPoints() > student1.getTotalFacultyPoints()) {
-            System.out.println(student2.getName() + " (" + student2.getTotalFacultyPoints() + ")" + " is better " + student1.getFacultyName() + " than " + student1.getName() + " (" + student1.getTotalFacultyPoints() + ")");
+            System.out.println(student2.getName() + " (" + student2.getTotalFacultyPoints() + ")" + " is better " + student1.getClass().getName() + " than " + student1.getName() + " (" + student1.getTotalFacultyPoints() + ")");
         } else {
-            System.out.println("Both " + student1.getFacultyName() + " students have the same strength - " + student1.getTotalFacultyPoints());
+            System.out.println("Both " + student1.getClass().getName() + " students have the same strength - " + student1.getTotalFacultyPoints());
         }
     }
 
@@ -77,16 +76,8 @@ public abstract class Hogwarts {
         return teleport;
     }
 
-    protected String getFacultyName() {
-        return facultyName;
-    }
-
     protected int getTotalFacultyPoints() {
         return totalFacultyPoints;
-    }
-
-    protected void setFacultyName(String facultyName) {
-        this.facultyName = facultyName;
     }
 
     protected void setTotalFacultyPoints(int totalFacultyPoints) {

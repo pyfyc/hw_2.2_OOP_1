@@ -11,7 +11,6 @@ public class Griffindor extends Hogwarts {
         this.nobility = nobility;
         this.honor = honor;
         this.bravery = bravery;
-        this.setFacultyName("Griffindor");
     }
 
     public static void compareFacultyStudents(Griffindor student1, Griffindor student2) {

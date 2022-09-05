@@ -11,7 +11,6 @@ public class Puffenduy extends Hogwarts {
         this.hardwork = hardWork;
         this.loyalty = loyalty;
         this.honesty = honesty;
-        this.setFacultyName("Puffenduy");
     }
 
     public static void compareFacultyStudents(Puffenduy student1, Puffenduy student2) {

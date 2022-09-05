@@ -14,7 +14,6 @@ public class Kogtevran extends Hogwarts{
         this.wisdom = wisdom;
         this.wit = wit;
         this.creative = creative;
-        this.setFacultyName("Kogtevran");
     }
 
     public static void compareFacultyStudents(Kogtevran student1, Kogtevran student2) {

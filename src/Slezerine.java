@@ -17,7 +17,6 @@ public class Slezerine extends Hogwarts{
         this.ambition = ambition;
         this.resourcefulness = resourcefulness;
         this.hungerForPower = hungerForPower;
-        this.setFacultyName("Slezerine");
     }
 
     public static void compareFacultyStudents(Slezerine student1, Slezerine student2) {
