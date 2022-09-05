@@ -11,13 +11,14 @@ public class Puffenduy extends Hogwarts {
         this.hardwork = hardWork;
         this.loyalty = loyalty;
         this.honesty = honesty;
+        this.setFacultyName("Puffenduy");
     }
 
     public static void compareFacultyStudents(Puffenduy student1, Puffenduy student2) {
         if (student1 != null && student2 != null) {
-            int total1 = student1.hardwork + student1.loyalty + student1.honesty;
-            int total2 = student2.hardwork + student2.loyalty + student2.honesty;
-            compareTotalPoints("Puffenduyan", student1.getName(), total1, student2.getName(), total2);
+            student1.setTotalFacultyPoints(student1.hardwork + student1.loyalty + student1.honesty);
+            student2.setTotalFacultyPoints(student2.hardwork + student2.loyalty + student2.honesty);
+            compareTotalPoints(student1, student2);
         }
     }
 

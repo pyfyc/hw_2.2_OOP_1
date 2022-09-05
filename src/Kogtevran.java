@@ -14,13 +14,14 @@ public class Kogtevran extends Hogwarts{
         this.wisdom = wisdom;
         this.wit = wit;
         this.creative = creative;
+        this.setFacultyName("Kogtevran");
     }
 
     public static void compareFacultyStudents(Kogtevran student1, Kogtevran student2) {
         if (student1 != null && student2 != null) {
-            int total1 = student1.smart + student1.wisdom + student1.wit + student1.creative;
-            int total2 = student2.smart + student2.wisdom + student2.wit + student2.creative;
-            compareTotalPoints("Kogtevranian", student1.getName(), total1, student2.getName(), total2);
+            student1.setTotalFacultyPoints(student1.smart + student1.wisdom + student1.wit + student1.creative);
+            student2.setTotalFacultyPoints(student2.smart + student2.wisdom + student2.wit + student2.creative);
+            compareTotalPoints(student1, student2);
         }
     }
 

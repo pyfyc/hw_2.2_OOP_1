@@ -1,9 +1,12 @@
-public class Hogwarts {
+public abstract class Hogwarts {
     private final String name;
     private final int magic;
     private final int teleport;
-    private final int MIN_VALUE = 0;
-    private final int MAX_VALUE = 100;
+    protected String facultyName;
+    protected int totalFacultyPoints;
+    private static final int MIN_VALUE = 0;
+
+    private static final int MAX_VALUE = 100;
 
     public Hogwarts(String name, int magic, int teleport) {
         validateIntField("Magic", magic);
@@ -19,11 +22,25 @@ public class Hogwarts {
         }
     }
 
-    private static void compareStudentsProperty(String propName, String studentName1, int studentProp1, String studentName2, int studentProp2) {
-        if (studentProp1 > studentProp2) {
-            System.out.println(studentName1 + "'s " + propName + " is better than " + studentName2 + "'s");
-        } else if (studentProp2 > studentProp1) {
-            System.out.println(studentName2 + "'s " + propName + " is better than " + studentName1 + "'s");
+    private static void compareStudentsProperty(String propName, Hogwarts student1, Hogwarts student2) {
+        int propValue1;
+        int propValue2;
+        switch (propName) {
+            case "magic":
+                propValue1 = student1.getMagic();
+                propValue2 = student2.getMagic();
+                break;
+            case "teleport":
+                propValue1 = student1.getTeleport();
+                propValue2 = student2.getTeleport();
+                break;
+            default:
+                throw new RuntimeException("Unknown Hogwarts field: " + propName);
+        }
+        if (propValue1 > propValue2) {
+            System.out.println(student1.getName() + "'s " + propName + " is better than " + student2.getName() + "'s");
+        } else if (propValue2 > propValue1) {
+            System.out.println(student2.getName() + "'s " + propName + " is better than " + student1.getName() + "'s");
         } else {
             System.out.println("Both students " + propName + " is the same");
         }
@@ -31,24 +48,22 @@ public class Hogwarts {
 
     public static void compareStudents(Hogwarts student1, Hogwarts student2) {
         if (student1 != null && student2 != null) {
-            compareStudentsProperty("magic", student1.getName(), student1.getMagic(), student2.getName(), student2.getMagic());
-            compareStudentsProperty("teleport", student1.getName(), student1.getTeleport(), student2.getName(), student2.getTeleport());
+            compareStudentsProperty("magic", student1, student2);
+            compareStudentsProperty("teleport", student1, student2);
         }
     }
 
-    protected static void compareTotalPoints(String facultyName, String studentName1, int total1, String studentName2, int total2) {
-        if (total1 > total2) {
-            System.out.println(studentName1 + " (" + total1 + ")" + " is better " + facultyName + " than " + studentName2 + " (" + total2 + ")");
-        } else if (total2 > total1) {
-            System.out.println(studentName2 + " (" + total2 + ")" + " is better " + facultyName + " than " + studentName1 + " (" + total1 + ")");
+    protected static void compareTotalPoints(Hogwarts student1, Hogwarts student2) {
+        if (student1.getTotalFacultyPoints() > student2.getTotalFacultyPoints()) {
+            System.out.println(student1.getName() + " (" + student1.getTotalFacultyPoints() + ")" + " is better " + student1.getFacultyName() + " than " + student2.getName() + " (" + student2.getTotalFacultyPoints() + ")");
+        } else if (student2.getTotalFacultyPoints() > student1.getTotalFacultyPoints()) {
+            System.out.println(student2.getName() + " (" + student2.getTotalFacultyPoints() + ")" + " is better " + student1.getFacultyName() + " than " + student1.getName() + " (" + student1.getTotalFacultyPoints() + ")");
         } else {
-            System.out.println("Both " + facultyName + " students have the same strength - " + total1);
+            System.out.println("Both " + student1.getFacultyName() + " students have the same strength - " + student1.getTotalFacultyPoints());
         }
     }
 
-    protected void printStudent() {
-        // To Override in subclasses.
-    }
+    protected abstract void printStudent();
 
     protected String getName() {
         return name;
@@ -60,5 +75,21 @@ public class Hogwarts {
 
     protected int getTeleport() {
         return teleport;
+    }
+
+    protected String getFacultyName() {
+        return facultyName;
+    }
+
+    protected int getTotalFacultyPoints() {
+        return totalFacultyPoints;
+    }
+
+    protected void setFacultyName(String facultyName) {
+        this.facultyName = facultyName;
+    }
+
+    protected void setTotalFacultyPoints(int totalFacultyPoints) {
+        this.totalFacultyPoints = totalFacultyPoints;
     }
 }

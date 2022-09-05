@@ -11,13 +11,14 @@ public class Griffindor extends Hogwarts {
         this.nobility = nobility;
         this.honor = honor;
         this.bravery = bravery;
+        this.setFacultyName("Griffindor");
     }
 
     public static void compareFacultyStudents(Griffindor student1, Griffindor student2) {
         if (student1 != null && student2 != null) {
-            int total1 = student1.nobility + student1.honor + student1.bravery;
-            int total2 = student2.nobility + student2.honor + student2.bravery;
-            compareTotalPoints("Griffindorian", student1.getName(), total1, student2.getName(), total2);
+            student1.setTotalFacultyPoints(student1.nobility + student1.honor + student1.bravery);
+            student2.setTotalFacultyPoints(student2.nobility + student2.honor + student2.bravery);
+            compareTotalPoints(student1, student2);
         }
     }
 

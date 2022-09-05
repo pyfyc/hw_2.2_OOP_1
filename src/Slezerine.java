@@ -17,13 +17,14 @@ public class Slezerine extends Hogwarts{
         this.ambition = ambition;
         this.resourcefulness = resourcefulness;
         this.hungerForPower = hungerForPower;
+        this.setFacultyName("Slezerine");
     }
 
     public static void compareFacultyStudents(Slezerine student1, Slezerine student2) {
         if (student1 != null && student2 != null) {
-            int total1 = student1.tricky + student1.resoluteness + student1.ambition + student1.resourcefulness + student1.hungerForPower;
-            int total2 = student2.tricky + student2.resoluteness + student2.ambition + student2.resourcefulness + student2.hungerForPower;
-            compareTotalPoints("Slezerinian", student1.getName(), total1, student2.getName(), total2);
+            student1.setTotalFacultyPoints(student1.tricky + student1.resoluteness + student1.ambition + student1.resourcefulness + student1.hungerForPower);
+            student2.setTotalFacultyPoints(student2.tricky + student2.resoluteness + student2.ambition + student2.resourcefulness + student2.hungerForPower);
+            compareTotalPoints(student1, student2);
         }
     }
 
